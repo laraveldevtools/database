@@ -27,7 +27,7 @@ class DatabaseServiceProvider extends ServiceProvider
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../public/build' => public_path('/build'),
+                __DIR__.'/../public/build' => public_path('vendor/laraveldevtools'),
             ], 'assets');
         }
     }

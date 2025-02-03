@@ -5,7 +5,7 @@ import { resolve } from 'path';
 export default defineConfig({
     build: {
         manifest: false,
-        outDir: resolve(__dirname, 'public/build/laraveldevtools'),
+        outDir: resolve(__dirname, 'public/build'),
         rollupOptions: {
             output: {
                 entryFileNames: `app.js`,
