@@ -15,10 +15,10 @@
         })
     "
     @hide-entry-editor="entryEditor = false"
-    class="relative w-full h-full">
+    class="overflow-auto relative p-3 w-full h-full">
     <div class="relative mb-3 w-full">
         <svg class="absolute mt-2.5 ml-3.5 w-5 h-5 text-gray-400 peer-focused:text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
-        <input type="text" wire:model.live.debounce.300ms="search" class="pl-10 w-full h-10 text-sm bg-gray-100 rounded-full border-0 peer focus:ring-0 focus:outline-none focus-within:outline-none" placeholder="Search" />
+        <input type="text" wire:model.live.debounce.300ms="search" class="pl-10 w-full h-10 text-sm bg-gray-100 rounded-lg border-0 peer focus:ring-0 focus:outline-none focus-within:outline-none" placeholder="Search" />
     </div>
     <div class="flex overflow-hidden relative items-start pr-10 w-full h-auto rounded-md border border-gray-200">
         <div class="overflow-x-auto w-full h-full" style="font-size:0px;">
@@ -29,7 +29,7 @@
                             <tr class="text-neutral-500">
                                 @foreach($this->tableColumns as $column)
 
-                                    <th wire:click="sortBy('{{ $column }}')" class="table-cell px-4 h-12 text-xs font-medium text-left uppercase align-middle cursor-pointer select-none group hover:underline">
+                                    <th wire:click="sortBy('{{ $column }}')" class="table-cell px-4 h-10 text-xs font-medium text-left uppercase align-middle cursor-pointer select-none group hover:underline">
                                         <span class="flex items-center space-x-0.5">
                                             <span>{{ $column }}</span>
                                             @if($sortDirection == 'desc' && $sortColumn == $column)
@@ -40,7 +40,7 @@
                                         </span>
                                     </th>
                                 @endforeach
-                                <th class="absolute right-0 inline-flex cursor-pointer items-center justify-center text-xs h-12 w-12 shadow-[-3px_0_5px_0_rgba(0,0,0,0.06)] bg-neutral-50 border-l border-gray-100 group-hover:bg-gray-100">
+                                <th class="absolute right-0 inline-flex cursor-pointer items-center justify-center text-xs h-10 w-10 shadow-[-3px_0_5px_0_rgba(0,0,0,0.06)] bg-neutral-50 border-l border-gray-100 group-hover:bg-gray-100">
                                     <span class="flex justify-center items-center w-6 h-6 rounded hover:bg-gray-200">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" /></svg>
                                     </span>
@@ -51,9 +51,9 @@
                             @foreach($tableData as $data)
                                 <tr @click="openEntryEditor('{{ $data->id }}')" class="overflow-hidden text-gray-900 duration-100 ease-out cursor-pointer group hover:bg-gray-100" wire:key="{{ $this->table }}-{{ $data->id }}">
                                     @foreach($this->tableColumns as $column)
-                                        <td class="table-cell flex-shrink-0 px-4 h-12 text-sm align-middle whitespace-nowrap">{{ $data->{$column} }}</td>
+                                        <td class="table-cell flex-shrink-0 px-4 h-10 text-sm align-middle whitespace-nowrap">{{ $data->{$column} }}</td>
                                     @endforeach
-                                    <td class="absolute right-0 inline-flex items-center h-12 w-12 justify-center shadow-[-3px_0_5px_0_rgba(0,0,0,0.06)] bg-white border-l border-gray-100 group-hover:bg-gray-100">
+                                    <td class="absolute right-0 inline-flex items-center h-10 w-10 justify-center shadow-[-3px_0_5px_0_rgba(0,0,0,0.06)] bg-white border-l border-gray-100 group-hover:bg-gray-100">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" /></svg>
                                     </td>
                                 </tr>
@@ -90,7 +90,7 @@
                                         <div class="flex justify-between items-start">
                                             <h2 class="text-base font-light leading-6 text-gray-900" id="slide-over-title">Edit <span class="font-semibold">{{ $this->table }}</span> record</h2>
                                             <div class="flex items-center ml-3 h-auto">
-                                                <button @click="entryEditor=false" class="relative top-0 right-0 z-30 flex items-center justify-center px-3 py-2 mt-0 mr-5 space-x-1 text-[0.7rem] font-medium leading-none -translate-y-1 border rounded-full border-neutral-200 text-neutral-600 group hover:text-gray-700 hover:bg-neutral-100">
+                                                <button @click="entryEditor=false" class="relative top-0 right-0 z-30 flex items-center justify-center px-3 py-2 mt-0 space-x-1 text-[0.7rem] font-medium leading-none -translate-y-1 border rounded-full border-neutral-200 text-neutral-600 group hover:text-gray-700 hover:bg-neutral-100">
                                                     <span class="text-gray-400 translate-x-px -translate-y-px group-hover:text-gray-700">esc</span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
                                                 </button>
@@ -121,7 +121,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="flex flex-shrink-0 justify-end px-6 py-4">
+                                    <div class="flex flex-shrink-0 justify-end px-4 py-3">
                                         <button type="button" @click="entryEditor=false" class="px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded ring-1 ring-inset ring-gray-300 shadow-sm hover:ring-gray-400" @click="open = false">Cancel</button>
                                         <button type="submit" wire:click="saveEntry" class="inline-flex justify-center px-3 py-2 ml-4 text-sm font-semibold text-white bg-gray-800 rounded shadow-sm hover:bg-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">Save</button>
                                     </div>

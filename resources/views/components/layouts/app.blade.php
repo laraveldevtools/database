@@ -12,7 +12,7 @@
     @endif
     @livewireStyles
 </head>
-<body>
+<body class="overflow-hidden w-screen h-screen">
 
     {{ $slot }}
     @livewireScripts

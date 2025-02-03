@@ -30,18 +30,16 @@
                 <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
-        <ul class="space-y-2 text-lg">
+        <ul class="p-2 space-y-1 text-sm">
             <template x-for="table in filteredTables">
                 <li>
                     <button 
                         @click="selectTable(table)" 
-                        class="flex justify-start items-center w-full duration-300 ease-out hover:pl-1 text-neutral-900/90 hover:text-neutral-900 group">
+                        :class="{ 'bg-neutral-200 text-neutral-900/90 pl-3' : selectedTable == table, 'hover:bg-neutral-200 pl-2 hover:text-neutral-900 text-neutral-900/60' : selectedTable != table}"
+                        class="flex justify-start items-center py-1 pr-2 w-full rounded-md duration-300 ease-out hover:pl-3 group">
                         <span class="relative">
                             <span x-text="tableCapitalized(table)"></span>
-                            <span 
-                                
-                                :class="{'opacity-100 w-full left-0': selectedTable == table, 'opacity-0 w-0 left-0': selectedTable != table}"
-                                class="block absolute bottom-0 h-0.5 rounded-full duration-200 ease-out translate-y-px bg-neutral-900"></span>
+                            
                         </span>
 
                     </button>
