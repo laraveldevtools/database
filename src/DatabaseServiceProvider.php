@@ -3,6 +3,10 @@
 namespace Laraveldevtools\Database;
 
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Laraveldevtools\Database\Components\DatabaseDevTools;
+use Laraveldevtools\Database\Components\Database as DatabaseComponent;
+use Laraveldevtools\Database\Components\Tables;
 
 class DatabaseServiceProvider extends ServiceProvider
 {
@@ -11,36 +15,16 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'database');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'database');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laraveldevtools-database');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+        Livewire::component('laraveldevtools-database', DatabaseComponent::class);
+        Livewire::component('laraveldevtools-tables', Tables::class);
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('database.php'),
             ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/database'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/database'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/database'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 
