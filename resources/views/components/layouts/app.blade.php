@@ -7,8 +7,8 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="http://localhost:5173/resources/js/app.js" type="module"></script>
     @else
-        <link rel="stylesheet" href="{{ asset('vendor/laraveldevtools-database/build/laraveldevtools/app.css') }}">
-        <script src="{{ asset('vendor/laraveldevtools-database/build/laraveldevtools/app.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('vendor/laraveldevtools/app.css') }}">
+        <script src="{{ asset('vendor/laraveldevtools/app.js') }}"></script>
     @endif
     @livewireStyles
 </head>
