@@ -23,7 +23,7 @@ class DatabaseServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('database.php'),
+                __DIR__.'/../config/config.php' => config_path('laraveldevtools/database.php'),
             ], 'config');
 
             $this->publishes([
